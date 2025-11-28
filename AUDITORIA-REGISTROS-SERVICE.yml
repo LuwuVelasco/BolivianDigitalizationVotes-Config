@@ -1,17 +1,12 @@
-# ==========================
-# CONFIGURACIÓN ESPECÍFICA AUDITORÍA
-# Nombre de app: AUDITORIA-REGISTROS-SERVICE
-# ==========================
-
 server:
   port: 8085
 
 spring:
   datasource:
     # local
-    url: jdbc:postgresql://localhost:5435/auditoria_db
+    #url: jdbc:postgresql://localhost:5435/auditoria_db
     # para docker luego usaremos otro yml con override
-    # url: jdbc:postgresql://postgres-db-auditoria:5432/auditoria_db
+    url: jdbc:postgresql://postgres-db-auditoria:5432/auditoria_db
     username: ${SPRING_DATASOURCE_USERNAME:auditoria_user}
     password: ${SPRING_DATASOURCE_PASSWORD:auditoria_pass}
     driver-class-name: org.postgresql.Driver
