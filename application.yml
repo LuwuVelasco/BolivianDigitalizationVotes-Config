@@ -1,0 +1,19 @@
+eureka:
+  client:
+    service-url:
+      # Se puede sobreescribir con env EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka}
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # Se puede sobreescribir con env SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI
+          jwk-set-uri: ${SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI:http://host.docker.internal:8090/realms/votaciones/protocol/openid-connect/certs}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
