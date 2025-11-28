@@ -8,7 +8,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://postgres-db-auditoria:5432/auditoria_db
+    #local
+    url: jdbc:postgresql://localhost:5435/auditoria_db
+    #url: jdbc:postgresql://postgres-db-auditoria:5432/auditoria_db
     # Si quieres, estos se pueden sobreescribir con ENV en docker-compose
     username: ${SPRING_DATASOURCE_USERNAME:auditoria_user}
     password: ${SPRING_DATASOURCE_PASSWORD:auditoria_pass}
