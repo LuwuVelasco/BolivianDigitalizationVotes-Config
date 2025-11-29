@@ -8,7 +8,7 @@ spring:
     # para docker luego usaremos otro yml con override
     url: jdbc:postgresql://postgres-db-auditoria:5432/auditoria_db
     username: ${SPRING_DATASOURCE_USERNAME:auditoria_user}
-    password: ${SPRING_DATASOURCE_PASSWORD:auditoria_pass}
+    password: '{cipher}da2626f0aa866ad9add932c467bb936babb4a649dc6dae6a7d397753abbc7fc9'
     driver-class-name: org.postgresql.Driver
 
   jpa:
