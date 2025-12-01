@@ -7,9 +7,7 @@ spring:
     url: jdbc:postgresql://postgres-db-usuarios:5432/usuarios_db #
     username: ${SPRING_DATASOURCE_USERNAME:postgres}
     # IMPORTANTE: Para producción, encriptar la contraseña con Spring Cloud Config Encryption
-    password: "{cipher}TU_PASSWORD_ENCRIPTADO_AQUI"
-    # O para desarrollo local (sin encriptar):
-    # password: password
+    password: "{cipher}4941966c51fd7b33da29155e41d0600e5012837ae231ac05f620c08fb41ed342"
     driver-class-name: org.postgresql.Driver
   # Sección de JPA/Hibernate
   jpa:
