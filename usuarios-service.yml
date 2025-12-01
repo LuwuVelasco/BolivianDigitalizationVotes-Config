@@ -4,7 +4,7 @@ spring:
   # Sección de la Base de Datos
   datasource:
     # Para desarrollo local
-    url: jdbc:postgresql://localhost:5432/usuarios_db
+    url: jdbc:postgresql://postgres-db-usuarios:5432/usuarios_db #
     username: ${SPRING_DATASOURCE_USERNAME:postgres}
     # IMPORTANTE: Para producción, encriptar la contraseña con Spring Cloud Config Encryption
     password: "{cipher}TU_PASSWORD_ENCRIPTADO_AQUI"
