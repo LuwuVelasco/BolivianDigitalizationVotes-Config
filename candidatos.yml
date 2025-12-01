@@ -1,0 +1,53 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres-db-candidatos:5432/candidatos_db
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: kafka:9092
+      bindings:
+        enviarNotificacion-out-0:
+          destination: notificaciones
+          content-type: application/json
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://host.docker.internal:8090/realms/votaciones/protocol/openid-connect/certs
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    hostname: candidatos-service
+server:
+  port: 8082
+app:
+  auditoria:
+    base-url: http://AUDITORIA-REGISTROS-SERVICE
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+logging:
+  level:
+    root: INFO
+    com.votaciones: DEBUG
+    org.springframework.security: DEBUG
