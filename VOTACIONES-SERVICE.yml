@@ -3,11 +3,14 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/votaciones_db
-    username: postgres
-    password: password
+    # local
+    #url: jdbc:postgresql://localhost:5433/votaciones_db
+    # para docker luego usaremos otro yml con override
+    url: jdbc:postgresql://postgres-votaciones:5432/votaciones_db
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:password}
     driver-class-name: org.postgresql.Driver
-  
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -15,7 +18,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-  
+
   cloud:
     stream:
       function:
@@ -27,30 +30,11 @@ spring:
           destination: topic-votaciones
       kafka:
         binder:
-          brokers: localhost:9092
-  
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://localhost:8090/realms/votaciones/protocol/openid-connect/certs
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-  instance:
-    prefer-ip-address: true
+          brokers: ${SPRING_CLOUD_STREAM_KAFKA_BINDER_BROKERS:localhost:9092}
 
 app:
   auditoria:
-    base-url: http://localhost:8083
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+    base-url: http://AUDITORIA-REGISTROS-SERVICE
 
 logging:
   level:
